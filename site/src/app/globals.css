@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --senac-blue: #004B8D;
+  --senac-blue-light: #0066CC;
+  --senac-yellow: #F5A623;
+  --senac-gold: #E8960C;
+  --senac-green: #2D8C4E;
+  --senac-green-dark: #1B5E35;
+  --senac-teal: #00897B;
+  --senac-pink: #E91E63;
+  --senac-orange: #FF6B35;
+  --senac-red: #CC3333;
+  --background: #f8f9fa;
+  --foreground: #1a1a2e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-senac-blue: var(--senac-blue);
+  --color-senac-blue-light: var(--senac-blue-light);
+  --color-senac-yellow: var(--senac-yellow);
+  --color-senac-gold: var(--senac-gold);
+  --color-senac-green: var(--senac-green);
+  --color-senac-green-dark: var(--senac-green-dark);
+  --color-senac-teal: var(--senac-teal);
+  --color-senac-pink: var(--senac-pink);
+  --color-senac-orange: var(--senac-orange);
+  --color-senac-red: var(--senac-red);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.4s ease-out forwards;
+}
+
+input[type="text"], input[type="date"], textarea {
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
+  outline: none;
+  border-color: var(--senac-blue);
+  box-shadow: 0 0 0 3px rgba(0, 75, 141, 0.15);
+}
+
+.passport-shadow {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 2px 10px rgba(0, 0, 0, 0.08);
+}
