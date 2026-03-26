@@ -1,0 +1,15 @@
+{
+  "name": "meunovoprojeto",
+  "version": "0.1.0",
+  "description": "Página interativa do PDI dos Líderes do Senac Tatuapé",
+  "scripts": {
+    "dev": "echo 'Add your dev script'",
+    "build": "echo 'Add your build script'",
+    "test": "echo 'Add your test script'",
+    "lint": "echo 'Add your lint script'",
+    "typecheck": "echo 'Add your typecheck script'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
