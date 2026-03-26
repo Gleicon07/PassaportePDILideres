@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { signIn, signUp } from "@/lib/supabase";
+import { signIn, signUp, resetPassword } from "@/lib/supabase";
 
 interface LoginScreenProps {
   onLogin: (userId: string) => void;
@@ -48,7 +48,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="text-4xl font-bold text-white tracking-wider mb-2">
-            S<span className="text-senac-yellow">e</span>na<span className="text-senac-yellow">c</span>
+            <span className="text-senac-yellow">Senac</span>
           </div>
           <h1 className="text-xl text-white font-bold">Passaporte PDI</h1>
           <p className="text-blue-200 text-sm mt-1">Minha Jornada de Desenvolvimento 2026</p>
@@ -95,6 +95,22 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
                 {error}
               </div>
             )}
+            {!isSignUp && (
+              <button
+                type="button"
+                onClick={async () => {
+                  if (!email) { setError("Digite seu email primeiro."); return; }
+                  setLoading(true);
+                  const { error: err } = await resetPassword(email);
+                  if (err) { setError("Erro ao enviar. Tente novamente."); }
+                  else { setSuccess("Email de redefinição enviado! Verifique sua caixa de entrada."); setError(""); }
+                  setLoading(false);
+                }}
+                className="text-senac-blue text-sm hover:underline"
+              >
+                Esqueceu sua senha?
+              </button>
+            )}
             {success && (
               <div className="bg-green-50 text-senac-green text-sm p-3 rounded-lg">
                 {success}
@@ -122,8 +138,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
 
         <p className="text-blue-300 text-xs text-center mt-6">
           PDI — Plano de Desenvolvimento Individual<br />
-          Gerência de Pessoal | Senac São Paulo
-        </p>
+            </p>
       </div>
     </div>
   );
