@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { signIn, signUp, resetPassword } from "@/lib/supabase";
+import { signIn, signUp, resetPassword, signInAnonymously } from "@/lib/supabase";
 
 interface LoginScreenProps {
   onLogin: (userId: string) => void;
@@ -126,13 +126,29 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
             </button>
           </form>
 
-          <div className="mt-6 text-center">
+          <div className="mt-6 text-center space-y-3">
             <button
               onClick={() => { setIsSignUp(!isSignUp); setError(""); setSuccess(""); }}
               className="text-senac-blue text-sm hover:underline"
             >
               {isSignUp ? "Já tem conta? Faça login" : "Primeiro acesso? Crie sua conta"}
             </button>
+            {!isSignUp && (
+              <button
+                onClick={async () => {
+                  setLoading(true);
+                  setError("");
+                  const { user, error: err } = await signInAnonymously();
+                  if (err) { setError("Erro ao entrar. Tente novamente."); }
+                  else if (user) { onLogin(user.id); }
+                  setLoading(false);
+                }}
+                disabled={loading}
+                className="w-full py-3 bg-gray-100 text-senac-blue font-bold rounded-xl hover:bg-gray-200 transition-colors disabled:opacity-50"
+              >
+                {loading ? "Aguarde..." : "Entrar como visitante"}
+              </button>
+            )}
           </div>
         </div>
 
