@@ -12,7 +12,7 @@ const STORAGE_ID_KEY = "pdi-passaporte-id";
 const TOTAL_PAGES = 14;
 
 const COMPETENCIES = [
-  { name: "Autoliderança", icon: "🦸", color: "bg-yellow-400", description: "Gerenciar a si mesmo com autonomia" },
+  { name: "Autoliderança", icon: "/icon-autolideranca.svg", color: "bg-yellow-400", description: "Gerenciar a si mesmo com autonomia" },
   { name: "Comunicação", icon: "🗣️", color: "bg-pink-400", description: "Expressar ideias com clareza" },
   { name: "Foco em Resultado", icon: "🎯", color: "bg-red-400", description: "Orientação para entregas" },
   { name: "Inovação", icon: "🚀", color: "bg-purple-500", description: "Buscar soluções criativas" },
