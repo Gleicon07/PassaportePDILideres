@@ -12,7 +12,7 @@ const STORAGE_ID_KEY = "pdi-passaporte-id";
 const TOTAL_PAGES = 14;
 
 const COMPETENCIES = [
-  { name: "Autoliderança", icon: "🦒", color: "bg-yellow-400", description: "Gerenciar a si mesmo com autonomia" },
+  { name: "Autoliderança", icon: "🦸", color: "bg-yellow-400", description: "Gerenciar a si mesmo com autonomia" },
   { name: "Comunicação", icon: "🗣️", color: "bg-pink-400", description: "Expressar ideias com clareza" },
   { name: "Foco em Resultado", icon: "🎯", color: "bg-red-400", description: "Orientação para entregas" },
   { name: "Inovação", icon: "🚀", color: "bg-purple-500", description: "Buscar soluções criativas" },
@@ -287,10 +287,26 @@ export default function Passport({ userId, onLogout }: PassportProps) {
           <CompetencyIcon key={comp.name} {...comp} />
         ))}
       </div>
-      <div className="mt-8 bg-senac-yellow/20 rounded-xl p-4 text-center">
-        <p className="text-sm text-senac-blue font-medium">
-          💡 Passe o mouse sobre cada competência para ver a descrição
-        </p>
+      {/* TODO: Substituir src do QR Code e href do botão */}
+      <div className="mt-8 bg-senac-yellow rounded-xl p-6 flex flex-col sm:flex-row items-center gap-4">
+        <div className="w-32 h-32 bg-white rounded-lg flex items-center justify-center border-2 border-dashed border-senac-blue/30 shrink-0">
+          {/* TODO: Trocar pelo QR Code real: <img src="/qrcode-competencias.png" alt="QR Code Competências" className="w-full h-full object-contain p-1" /> */}
+          <span className="text-xs text-gray-400 text-center px-2">QR Code aqui</span>
+        </div>
+        <div className="flex-1 text-center sm:text-left space-y-3">
+          <p className="text-lg font-bold text-senac-blue uppercase leading-tight">
+            Acesse o QR Code para conhecer cada competência essencial.
+          </p>
+          <a
+            href="# TODO: COLOCAR LINK AQUI"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-senac-blue text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-900 transition-colors"
+          >
+            <span className="text-xl">🔗</span>
+            Acessar Competências
+          </a>
+        </div>
       </div>
     </div>,
 
